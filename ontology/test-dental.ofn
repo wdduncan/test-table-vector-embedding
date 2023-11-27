@@ -1,0 +1,300 @@
+Prefix(:=<https://data-field-punning.owl#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<https://test-dental.owl>
+
+Declaration(Class(<https://test-dental.owl/canine>))
+Declaration(Class(<https://test-dental.owl/crown_restoration>))
+Declaration(Class(<https://test-dental.owl/data_value>))
+Declaration(Class(<https://test-dental.owl/dentist>))
+Declaration(Class(<https://test-dental.owl/entity>))
+Declaration(Class(<https://test-dental.owl/enumerated_value>))
+Declaration(Class(<https://test-dental.owl/female_patient>))
+Declaration(Class(<https://test-dental.owl/female_person>))
+Declaration(Class(<https://test-dental.owl/field>))
+Declaration(Class(<https://test-dental.owl/field_value>))
+Declaration(Class(<https://test-dental.owl/filling_restoration>))
+Declaration(Class(<https://test-dental.owl/inlay>))
+Declaration(Class(<https://test-dental.owl/male_patient>))
+Declaration(Class(<https://test-dental.owl/male_person>))
+Declaration(Class(<https://test-dental.owl/molar>))
+Declaration(Class(<https://test-dental.owl/onlay>))
+Declaration(Class(<https://test-dental.owl/patient>))
+Declaration(Class(<https://test-dental.owl/person>))
+Declaration(Class(<https://test-dental.owl/premolar>))
+Declaration(Class(<https://test-dental.owl/procedure>))
+Declaration(Class(<https://test-dental.owl/record>))
+Declaration(Class(<https://test-dental.owl/root_canal>))
+Declaration(Class(<https://test-dental.owl/row>))
+Declaration(Class(<https://test-dental.owl/schema_element>))
+Declaration(Class(<https://test-dental.owl/table>))
+Declaration(Class(<https://test-dental.owl/tooth>))
+Declaration(Class(<https://test-dental.owl/tooth_1>))
+Declaration(Class(<https://test-dental.owl/tooth_2>))
+Declaration(Class(<https://test-dental.owl/tooth_3>))
+Declaration(Class(<https://test-dental.owl/tooth_4>))
+Declaration(Class(<https://test-dental.owl/tooth_5>))
+Declaration(Class(<https://test-dental.owl/tooth_6>))
+Declaration(Class(<https://test-dental.owl/tooth_extraction>))
+Declaration(ObjectProperty(<https://test-dental.owl/defines_values_in>))
+Declaration(ObjectProperty(<https://test-dental.owl/has_member>))
+Declaration(ObjectProperty(<https://test-dental.owl/has_part>))
+Declaration(ObjectProperty(<https://test-dental.owl/has_participant>))
+Declaration(ObjectProperty(<https://test-dental.owl/member_of>))
+Declaration(ObjectProperty(<https://test-dental.owl/part_of>))
+Declaration(ObjectProperty(<https://test-dental.owl/participates_in>))
+Declaration(ObjectProperty(<https://test-dental.owl/represented_by>))
+Declaration(ObjectProperty(<https://test-dental.owl/represents>))
+Declaration(ObjectProperty(<https://test-dental.owl/values_defined_by>))
+Declaration(DataProperty(<https://test-dental.owl/has_value>))
+Declaration(NamedIndividual(<https://test-dental.owl/test-patient-1>))
+
+############################
+#   Object Properties
+############################
+
+# Object Property: <https://test-dental.owl/defines_values_in> (defines values in)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/defines_values_in> "defines values in")
+InverseObjectProperties(<https://test-dental.owl/defines_values_in> <https://test-dental.owl/values_defined_by>)
+
+# Object Property: <https://test-dental.owl/has_member> (has member)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/has_member> "has member")
+InverseObjectProperties(<https://test-dental.owl/has_member> <https://test-dental.owl/member_of>)
+TransitiveObjectProperty(<https://test-dental.owl/has_member>)
+
+# Object Property: <https://test-dental.owl/has_part> (has part)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/has_part> "has part")
+InverseObjectProperties(<https://test-dental.owl/has_part> <https://test-dental.owl/part_of>)
+
+# Object Property: <https://test-dental.owl/has_participant> (has participant)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/has_participant> "has participant")
+InverseObjectProperties(<https://test-dental.owl/has_participant> <https://test-dental.owl/participates_in>)
+
+# Object Property: <https://test-dental.owl/member_of> (member of)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/member_of> "member of")
+TransitiveObjectProperty(<https://test-dental.owl/member_of>)
+
+# Object Property: <https://test-dental.owl/part_of> (part of)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/part_of> "part of")
+
+# Object Property: <https://test-dental.owl/participates_in> (participates in)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/participates_in> "participates in")
+
+# Object Property: <https://test-dental.owl/represented_by> (represented by)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/represented_by> "represented by")
+InverseObjectProperties(<https://test-dental.owl/represented_by> <https://test-dental.owl/represents>)
+
+# Object Property: <https://test-dental.owl/represents> (represents)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/represents> "represents")
+
+# Object Property: <https://test-dental.owl/values_defined_by> (values defined by)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/values_defined_by> "values defined by")
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: <https://test-dental.owl/has_value> (has value)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/has_value> "has value")
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <https://test-dental.owl/canine> (canine)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/canine> "canine")
+SubClassOf(<https://test-dental.owl/canine> <https://test-dental.owl/tooth>)
+
+# Class: <https://test-dental.owl/crown_restoration> (crown restoration)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/crown_restoration> "crown restoration")
+SubClassOf(<https://test-dental.owl/crown_restoration> <https://test-dental.owl/procedure>)
+
+# Class: <https://test-dental.owl/data_value> (data value)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/data_value> "data value")
+SubClassOf(<https://test-dental.owl/data_value> <https://test-dental.owl/schema_element>)
+
+# Class: <https://test-dental.owl/dentist> (dentist)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/dentist> "dentist")
+SubClassOf(<https://test-dental.owl/dentist> <https://test-dental.owl/person>)
+
+# Class: <https://test-dental.owl/entity> (entity)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/entity> "entity")
+
+# Class: <https://test-dental.owl/enumerated_value> (enumerated value)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/enumerated_value> "enumerated value")
+SubClassOf(<https://test-dental.owl/enumerated_value> <https://test-dental.owl/data_value>)
+
+# Class: <https://test-dental.owl/female_patient> (female patient)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/female_patient> "female patient")
+EquivalentClasses(<https://test-dental.owl/female_patient> ObjectIntersectionOf(<https://test-dental.owl/female_person> <https://test-dental.owl/patient>))
+
+# Class: <https://test-dental.owl/female_person> (female person)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/female_person> "female person")
+SubClassOf(<https://test-dental.owl/female_person> <https://test-dental.owl/person>)
+
+# Class: <https://test-dental.owl/field> (field)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/field> "field")
+SubClassOf(<https://test-dental.owl/field> <https://test-dental.owl/schema_element>)
+SubClassOf(<https://test-dental.owl/field> ObjectSomeValuesFrom(<https://test-dental.owl/member_of> <https://test-dental.owl/record>))
+
+# Class: <https://test-dental.owl/field_value> (field value)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/field_value> "field value")
+SubClassOf(<https://test-dental.owl/field_value> <https://test-dental.owl/data_value>)
+SubClassOf(<https://test-dental.owl/field_value> ObjectSomeValuesFrom(<https://test-dental.owl/member_of> <https://test-dental.owl/field>))
+
+# Class: <https://test-dental.owl/filling_restoration> (filling restoration)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/filling_restoration> "filling restoration")
+SubClassOf(<https://test-dental.owl/filling_restoration> <https://test-dental.owl/procedure>)
+
+# Class: <https://test-dental.owl/inlay> (inlay)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/inlay> "inlay")
+SubClassOf(<https://test-dental.owl/inlay> <https://test-dental.owl/procedure>)
+
+# Class: <https://test-dental.owl/male_patient> (male patient)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/male_patient> "male patient")
+EquivalentClasses(<https://test-dental.owl/male_patient> ObjectIntersectionOf(<https://test-dental.owl/male_person> <https://test-dental.owl/patient>))
+
+# Class: <https://test-dental.owl/male_person> (male person)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/male_person> "male person")
+SubClassOf(<https://test-dental.owl/male_person> <https://test-dental.owl/person>)
+
+# Class: <https://test-dental.owl/molar> (molar)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/molar> "molar")
+SubClassOf(<https://test-dental.owl/molar> <https://test-dental.owl/tooth>)
+
+# Class: <https://test-dental.owl/onlay> (onlay)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/onlay> "onlay")
+SubClassOf(<https://test-dental.owl/onlay> <https://test-dental.owl/procedure>)
+
+# Class: <https://test-dental.owl/patient> (patient)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/patient> "patient")
+SubClassOf(<https://test-dental.owl/patient> <https://test-dental.owl/person>)
+
+# Class: <https://test-dental.owl/person> (person)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/person> "person")
+SubClassOf(<https://test-dental.owl/person> <https://test-dental.owl/entity>)
+
+# Class: <https://test-dental.owl/premolar> (premolar)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/premolar> "premolar")
+SubClassOf(<https://test-dental.owl/premolar> <https://test-dental.owl/tooth>)
+
+# Class: <https://test-dental.owl/procedure> (procedure)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/procedure> "procedure")
+SubClassOf(<https://test-dental.owl/procedure> <https://test-dental.owl/entity>)
+
+# Class: <https://test-dental.owl/record> (record)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/record> "record")
+SubClassOf(<https://test-dental.owl/record> <https://test-dental.owl/schema_element>)
+SubClassOf(<https://test-dental.owl/record> ObjectSomeValuesFrom(<https://test-dental.owl/member_of> <https://test-dental.owl/table>))
+
+# Class: <https://test-dental.owl/root_canal> (root canal)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/root_canal> "root canal")
+SubClassOf(<https://test-dental.owl/root_canal> <https://test-dental.owl/procedure>)
+
+# Class: <https://test-dental.owl/row> (row)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/row> "row")
+SubClassOf(<https://test-dental.owl/row> <https://test-dental.owl/schema_element>)
+SubClassOf(<https://test-dental.owl/row> ObjectSomeValuesFrom(<https://test-dental.owl/member_of> <https://test-dental.owl/record>))
+
+# Class: <https://test-dental.owl/schema_element> (schema element)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/schema_element> "schema element")
+
+# Class: <https://test-dental.owl/table> (table)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/table> "table")
+SubClassOf(<https://test-dental.owl/table> <https://test-dental.owl/schema_element>)
+
+# Class: <https://test-dental.owl/tooth> (tooth)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/tooth> "tooth")
+SubClassOf(<https://test-dental.owl/tooth> <https://test-dental.owl/entity>)
+
+# Class: <https://test-dental.owl/tooth_1> (tooth 1)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/tooth_1> "tooth 1")
+SubClassOf(<https://test-dental.owl/tooth_1> <https://test-dental.owl/molar>)
+
+# Class: <https://test-dental.owl/tooth_2> (tooth 2)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/tooth_2> "tooth 2")
+SubClassOf(<https://test-dental.owl/tooth_2> <https://test-dental.owl/molar>)
+
+# Class: <https://test-dental.owl/tooth_3> (tooth 3)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/tooth_3> "tooth 3")
+SubClassOf(<https://test-dental.owl/tooth_3> <https://test-dental.owl/molar>)
+
+# Class: <https://test-dental.owl/tooth_4> (tooth 4)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/tooth_4> "tooth 4")
+SubClassOf(<https://test-dental.owl/tooth_4> <https://test-dental.owl/premolar>)
+
+# Class: <https://test-dental.owl/tooth_5> (tooth 5)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/tooth_5> "tooth 5")
+SubClassOf(<https://test-dental.owl/tooth_5> <https://test-dental.owl/premolar>)
+
+# Class: <https://test-dental.owl/tooth_6> (tooth 6)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/tooth_6> "tooth 6")
+SubClassOf(<https://test-dental.owl/tooth_6> <https://test-dental.owl/canine>)
+
+# Class: <https://test-dental.owl/tooth_extraction> (tooth extraction)
+
+AnnotationAssertion(rdfs:label <https://test-dental.owl/tooth_extraction> "tooth extraction")
+SubClassOf(<https://test-dental.owl/tooth_extraction> <https://test-dental.owl/procedure>)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: <https://test-dental.owl/test-patient-1> (<https://test-dental.owl/test-patient-1>)
+
+ClassAssertion(<https://test-dental.owl/patient> <https://test-dental.owl/test-patient-1>)
+
+
+)
