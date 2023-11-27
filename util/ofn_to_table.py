@@ -20,68 +20,71 @@ def check_line(line:str) -> bool:
 
 
 def parse_iri(text:str) -> str:
+    # search for iri between <>, this includes https://...
     match = re.search(r'\<.+?\>', text)
     if match:
-        return match.group()[1:-1]
+        return match.group()[1:-1] # dont't return closing ">"
     else:
+        # serch curie
         match = re.search(r'\:\w+\-', text)
 
         if match:
-            return match.group()[1:]
+            return match.group()[1:] # return text after the ":"
         else:
             return None
 
 
-def make_buffer_dict(file_name:str) -> dict:
+def make_buffer_dict(file:str) -> dict:
     buffer = {}
-    with open(file_name) as f:
+    with open(file) as f:
         for idx, line in enumerate(f.readlines()):
+            # create a dict for declared entities
             if line.startswith("Declaration(") and check_line(line):
                 iri = parse_iri(line)
                 buffer[iri] = []
 
     return buffer
 
-def main(file_name:str="test.ofn"):
-    buffer = make_buffer_dict(file_name) # seed dict with IRIs
+
+def ofn_to_df(file:str):
+    buffer = make_buffer_dict(file) # seed dict with IRIs
     iri = ""
 
-    with open(file_name) as f:
+    # reading the file creates list of axioms for each IRI key in the buffer dict
+    with open(file) as f:
         for idx, line in enumerate(f.readlines()):
             line = line.strip()
             
-            if line.startswith("# Object Property:") or line.startswith("# Class:"):
-                # print(line)
+            # parse IRI out of commented line
+            if (
+                line.startswith("# Object Property:") 
+                or line.startswith("# Class:")
+                or line.startswith("# Data Property")
+                or line.startswith("# Individual")
+            ):
                 iri = parse_iri(line)
-                # iri = idxs
+            
+            # append axiom to list associated with IRI key
             elif check_line(line) and len(iri) > 0 and buffer.get(iri) is not None:
-                # print('line', line)
-                # print(iri, ':', line)
-
                 buffer[iri].append(line)
+    
+    df = pd.DataFrame(
+        {
+            'iri': list(buffer.keys()),
+            'axiom': list(buffer.values())
+         }
+    )
+    df = df.explode('axiom').reset_index(drop=True) # explode axiom list
+    return df
+    
 
-            # print('buffer', buffer.get(iri))
-    # pd.set_option('display.max_colwidth', None)
-    pd.options.display.max_colwidth = 30
-    df = pd.DataFrame.from_dict(buffer, orient='index')
-    df = df.fillna("")
-    # df = pd.DataFrame({ key:pd.Series(value) for key, value in buffer.items() })
-    # df.columns = ['ofn']
-    # print('cols', df.columns)
-    # print(df)
-    # print('------')
-    df_combined = pd.DataFrame(data=df.apply(lambda row: '_'.join(row.values.astype(str)), axis=1), columns=['combined'])
-    df_combined['combined_length'] = df_combined['combined'].apply(len)
-    # print(df_combined)
-    # print('------')
-    df_melt = df.melt(ignore_index=False).drop(columns='variable')
-    df_melt['value_length'] = df_melt['value'].apply(len)
-    # print(df_melt)
+@click.command
+@click.option("--file", "-f")
+def main(file:str):
+    df = ofn_to_df(file)
+    return print(df)
 
-    # pprint(buffer)
-    return df.sort_index(), df_combined.sort_index(), df_melt.sort_index()
 
 if __name__ == '__main__':
-    df, df_combined, df_melt = main()
-    print(df_melt)
+    main()
 
